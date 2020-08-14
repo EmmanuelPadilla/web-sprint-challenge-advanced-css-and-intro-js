@@ -200,19 +200,34 @@ const artists = [
       "paintings": 328
     }
 ]
+const artists2 =[
+  { "id": 0,
+  "name": "Albt Dürer",
+  "years": "1471 - 1528",
+  "genre": "Northern Renaissance",
+  "nationality": "German",
+  "bio": " Born in chicago, Dürer established his reputation and influence across Europe when he was still in his twenties due to his high-quality woodcut prints.",
+  "wikipedia": "http://en.wikipedia.org/wiki/Albrecht_Dürer",
+  "paintings": 328
 
+  }
+]
 // 🖌🖼 M V P 🖼🖌 //
 
 /* Task 1: Practice accessing data above by console.log-ing following items:
 
 (1) Name of the first artist (0th index) in the array
 (2) Bio of the third artist (2nd index) in the array */
-
-
+console.log(artists[0].name)
+console.log(artists[2].bio)
 
 /* Task 2: There is a typo in your dataset 😱 The 9th artist, Vincent Van Gogh is currently Vincent Van Dough. Use an array method to fix this issue and console.log() to check your work. */
-
-
+function changeName(array, index, name){
+  array[index].name=name;
+  return array;
+}
+console.log(changeName(artists,8,'Vincent Van Gogh'))
+console.log(changeName(artists2,0,'Vincent Van Gogh'))
 
 /* Task 3: Create a function called `getArtistByIndex` that takes two arguments:
  *     (1) artists array
@@ -223,19 +238,27 @@ const artists = [
  * it will return `The artist at index 0 is Amedeo Modigliani`.
 */
 function getArtistByIndex(array, index) {
-    /* code here */
+    return `The artist at index ${[index]} is ${array[index].name}.`
   }
+  console.log(getArtistByIndex(artists,0))
   
-  /**
-
-
+ 
 /* Task 4: Create a function called get20s() that takes data as an argument and returns an array with names of artists who were born in and died in 20th century (1900-2000) example born in 1901 and died in 1959 - included / born in 1889 and died in 1925 not included - should return ["Salvador Dali", "Frida Kahlo"]*/
 
-function get20s(/* Code here */){
+function get20s(arr){
+  let newArr = [];
+      for(let i = 0; i < arr.length; i++){
 
-  /* Code here */
-
+        splitYears = arr[i].years.split(" ")
+        if( splitYears >="1900" && splitYears <="2000")
+        newArr.push(arr[i].name);
+        
+      }
+      return newArr;
 }
+console.log(get20s(artists))
+
+
 
 
 /* Task 5: Create a function called `removeArtist` that takes two arguments:
@@ -248,12 +271,14 @@ function get20s(/* Code here */){
  * 
  * Note that sucessfully invoking this function multiple times without refreshing your browser will continuously remove artists from the array until there are none left. If you refresh your browser, the data will reset.  
 */
-function removeArtist(/*code here*/) {
-    /* code here */
+function removeArtist(array, index) {
+    array.splice(index, 1)
+    console.log(array)
   }
-  
- 
+  removeArtist(artists,0);
 
+
+ 
 /**
 /* Task 6: Create a function called `addArtist` that can accept an object of information and add it to the artists array. Then, add a 21st artist to the array (you) with custom information!👩‍🎨👨‍🎨
 
@@ -267,11 +292,16 @@ bio: Add 1-2 sentences (or use lorem ipsum)
 
 At the end, this function should return the new array with information added"*/
 
-function addArtist(/* Code here */){
+function addArtist(array, id, name, years, genre, nationality, bio){
+  array.push({id, name, years, genre, nationality, bio})
+    return array;
+}
+console.log(addArtist( artists, 20, 'Emmanuel Padilla', '1983 - preset', 'Web Design', 'Mexican', 'After many years of building houses, Emmanuel decided to put down the hammer and build webpages instead.'))
 
-    /* Code here */
 
-  }
+ 
+
+
 
 /* Task 7: Create a function called lotsOfArt() that takes one argument: 
 
@@ -281,11 +311,32 @@ and returns an array with names of artists who painted more than 100 paintings.
 
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ..."Albrecht Dürer"]*/
 
-function lotsOfArt(/* Code here */){
+function lotsOfArt(array){
+  let paintedAlot =[  ]
+   for(let i =0; i < array.length; i++){
+    if(array[i].paintings >= 100){
+      paintedAlot.push(array[i].name)
+  }  
+      return paintedAlot;
+    
+  }
+}  
+console.log(lotsOfArt(artists))
+  
+  // find "paintings"
 
-  /* Code here */
+//   function filterByWord(arr, string){
+//     let newArr = [];
+//     for(let i = 0; i < arr.length; i++){
+//         if(arr [i].includes (string)){
+//             newArr.push(arr[i]);
 
-}
+//         }
+//     }
+//     return newArr;
+// }
+
+// console.log(filterByWord(originalFlavors,'Chocolate'));
 
 
 
