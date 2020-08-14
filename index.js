@@ -200,7 +200,18 @@ const artists = [
       "paintings": 328
     }
 ]
+const artists2 =[
+  { "id": 0,
+  "name": "Albt Dürer",
+  "years": "1471 - 1528",
+  "genre": "Northern Renaissance",
+  "nationality": "German",
+  "bio": " Born in chicago, Dürer established his reputation and influence across Europe when he was still in his twenties due to his high-quality woodcut prints.",
+  "wikipedia": "http://en.wikipedia.org/wiki/Albrecht_Dürer",
+  "paintings": 328
 
+  }
+]
 // 🖌🖼 M V P 🖼🖌 //
 
 /* Task 1: Practice accessing data above by console.log-ing following items:
@@ -216,7 +227,7 @@ function changeName(array, index, name){
   return array;
 }
 console.log(changeName(artists,8,'Vincent Van Gogh'))
-
+console.log(changeName(artists2,0,'Vincent Van Gogh'))
 
 /* Task 3: Create a function called `getArtistByIndex` that takes two arguments:
  *     (1) artists array
@@ -240,7 +251,7 @@ function get20s(arr){
 
         splitYears = arr[i].years.split(" ")
         if( splitYears >="1900" && splitYears <="2000")
-        newArr.push(arr[i]);
+        newArr.push(arr[i].name);
         
       }
       return newArr;
@@ -282,7 +293,7 @@ bio: Add 1-2 sentences (or use lorem ipsum)
 At the end, this function should return the new array with information added"*/
 
 function addArtist(array, id, name, years, genre, nationality, bio){
-  artists.push({id, name, years, genre, nationality, bio})
+  array.push({id, name, years, genre, nationality, bio})
     return array;
 }
 console.log(addArtist( artists, 20, 'Emmanuel Padilla', '1983 - preset', 'Web Design', 'Mexican', 'After many years of building houses, Emmanuel decided to put down the hammer and build webpages instead.'))
